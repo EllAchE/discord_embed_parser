@@ -23,6 +23,7 @@ export const createMatchEmbed = (embed: MessageEmbed): MessageEmbed => {
 export const getTweetShiftAuthor = (msg: Message): string => {
     const username = msg.author.username;
     const indexOfMatch = username.indexOf('TweetShift')
+    logger.info(`extracted username of ${username} from message`)
     if (indexOfMatch < 1) return "default"
     return msg.author.username.substring(0, indexOfMatch - 3)
 }
@@ -32,6 +33,7 @@ export const sendParsedEmbed = (originalEmbed: MessageEmbed, pattern: string, cl
     const embed = createMatchEmbed(originalEmbed); // todo update this embed
 
     if (channelId) {
+        logger.info(`attempting to send embed in channel with id ${channelId}`)
         const channel = client.channels.cache.get(channelId);
         (channel as TextChannel)?.send({ embeds: [embed] });
         (channel as TextChannel)?.send({ content: `Matching pattern was: ${pattern}` });
@@ -41,6 +43,7 @@ export const sendParsedEmbed = (originalEmbed: MessageEmbed, pattern: string, cl
 export const sendStringMatch = async (content: string, client: Client): Promise<void> => {
     const channelId = process.env.DISCORDJS_SEND_CHANNEL_ID; // enhancement is to support sending in same channel as embed is received in
     if (channelId) {
+        logger.info(`attempting to send embed in channel with id ${channelId}`)
         const channel = client.channels.cache.get(channelId);
         (channel as TextChannel)?.send({ content: content });
     }

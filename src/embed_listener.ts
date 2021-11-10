@@ -42,6 +42,7 @@ export const getRedirectUrl = async (url: string): Promise<string> => { // these
     }).catch(err => {
         logger.error(err)
     })
+    logger.info(`retrieved redirect url ${r} from url ${url}`)
     if (r) return r;
     else return url;
 }
@@ -83,7 +84,6 @@ export const iteratePatternsSynchronousEmbeds = (embeds: MessageEmbed[], regexFi
         for (let substring of regexConfig.substring) {
             regResult = testSubstringOnEmbed(embed, substring)
             if (regResult != "NO MATCH") {
-                logger.info("Match on message!", new Date())
                 matchPatternString = substring;
                 break;
             }
@@ -94,7 +94,6 @@ export const iteratePatternsSynchronousEmbeds = (embeds: MessageEmbed[], regexFi
                 regResult = testRegexOnEmbed(embed, pattern);
 
                 if (regResult != "NO MATCH") {
-                    logger.info("Match on message!", new Date());
                     matchPatternString = pattern;
                     break;
                 }
@@ -114,6 +113,7 @@ export const iteratePatternsSynchronousEmbeds = (embeds: MessageEmbed[], regexFi
         //     break;
         // }
         if (regResult != "NO MATCH") {
+            logger.info("Match on message!", new Date());
             //const stringMatch = embed[regResult].toString(); // commented  out until further logic needed on parsing embed
             sendParsedEmbed(embed, matchPatternString, client);
             break;
