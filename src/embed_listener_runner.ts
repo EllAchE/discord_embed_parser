@@ -38,7 +38,7 @@ client.on('messageCreate', (message: any): void => { // todo test race condition
     }
 })
 
-
+// Run program
 if (process.env.DISCORDJS_BOT_TOKEN_EMBED_LISTENER) {
     client.login(process.env.DISCORDJS_BOT_TOKEN_EMBED_LISTENER.toString());
     logger.info(`initialized client`, new Date())

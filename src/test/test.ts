@@ -18,7 +18,7 @@ const assert = require('assert')
 
 //describe('Should get synchronous regex')
 
-describe('Should test Regex on embed', () => {
+describe('Should properly apply Regex on embed', () => {
     const mockEmbed = getDummyEmbed();
     it('Should match on title', () => {
         assert(EmbedElements.Title, testRegexOnEmbed(mockEmbed, "Test Embed"))

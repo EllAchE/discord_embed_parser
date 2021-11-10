@@ -7,10 +7,10 @@ export const logger: Logger = createLogger(
             format.simple()
         ),
         transports: [
-            new transports.Console, // by default logs won't be saved
-            // new transports.File({
-            //     filename: './test.log'
-            // })
+            new transports.Console, // by default logs are saved to file
+            new transports.File({
+                filename: './test.log'
+            })
         ]
     }
 )

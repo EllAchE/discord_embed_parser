@@ -70,6 +70,7 @@ export const iterateRegPatternsAsyncEmbeds = async (embeds: MessageEmbed[], shou
             }
         }
     }
+    logger.info("No match on message when checking content asynchronously (shortened URLs).", new Date())
     return "NO MATCH";
 }
 
@@ -118,6 +119,7 @@ export const iteratePatternsSynchronousEmbeds = (embeds: MessageEmbed[], regexFi
             break;
         }
     }
+    logger.info("No match on message when checking content synchronously. Will check shortened URLs.", new Date())
     return regResult;
 }
 

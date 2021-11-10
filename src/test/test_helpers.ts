@@ -14,9 +14,12 @@ export const getDummyEmbed = (): MessageEmbed => {
     return dummyEmbed;
 }
 
+
 export const getDummyMessage = (): Message => {
     // @ts-ignore
     return {
+        // @ts-ignore
+        "content": "some string values in content",
         // @ts-ignore
         "author": {
             "username": "Jim Cramer • TweetShift"
