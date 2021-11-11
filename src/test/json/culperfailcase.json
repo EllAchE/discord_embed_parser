@@ -1,0 +1,37 @@
+{"author":{"iconURL":"https://pbs.twimg.com/profile_images/1257491202590588930/gaIuEmXQ_bigger.jpg",
+    "name":"Culper (@CulperResearch)",
+    "proxyIconURL":"https://images-ext-1.discordapp.net/external/ectJ0OC89BhRmVZRWEdQCzaLMT68XDlxXSKWpUzux7M/https/pbs.twimg.com/profile_images/1257491202590588930/gaIuEmXQ_bigger.jpg",
+    "url":"https://twitter.com/CulperResearch"},"color":1942002,"description":"Hey Zack, you good? Haven't heard from you in a while.",
+    "fields":[],"footer":{"iconURL":"https://abs.twimg.com/icons/apple-touch-icon-192x192.png",
+        "proxyIconURL":"https://images-ext-1.discordapp.net/external/bXJWV2Y_F3XSra_kEqIYXAAsI3m1meckfLhYuWzxIfI/https/abs.twimg.com/icons/apple-touch-icon-192x192.png",
+        "text":"Twitter"},
+        "image":{"height":1291,"proxyURL":"https://images-ext-1.discordapp.net/external/3vUeuP-wTffDvgJ48oUVKYzUhNKCu-gmbx7mZICj9sk/https/pbs.twimg.com/media/FD3Chr2XMAsvGeu.jpg%3Alarge",
+            "url":"https://pbs.twimg.com/media/FD3Chr2XMAsvGeu.jpg:large","width":1888},
+
+    
+        "provider":null,"thumbnail":null,"timestamp":1636577023835,"title":null,"type":"rich","url":"https://twitter.com/CulperResearch/status/1458535867836993537","video":null
+    }
+
+
+
+{"activity":null,"applicationId":"713026372142104687","attachments":[],"author":{"avatar":"753b8960bca748ea8f2c3816b922344d",
+    "avatarURL":"https://cdn.discordapp.com/avatars/891739136204087326/753b8960bca748ea8f2c3816b922344d.webp","bot":true,"createdTimestamp":1632677577783,
+    "defaultAvatarURL":"https://cdn.discordapp.com/embed/avatars/0.png","discriminator":"0000",
+    "displayAvatarURL":"https://cdn.discordapp.com/avatars/891739136204087326/753b8960bca748ea8f2c3816b922344d.webp","flags":null,"id":"891739136204087326","system":false,
+    "tag":"Coinbase • TweetShift#0000","username":"Coinbase • TweetShift"},"channelId":"891738656803545150","components":[],
+    "content":"Hey Zack, you good? Haven't heard from you in a while.  https://twitter.com/CulperResearch/status/1458535867836993537","createdTimestamp":1636577040216,"deleted":false,
+    "editedTimestamp":null,"embeds":[{"author":{"icon_url":"https://pbs.twimg.com/profile_images/1257491202590588930/gaIuEmXQ_bigger.jpg",
+        "name":"Culper (@CulperResearch)","url":"https://twitter.com/CulperResearch"},"color":1942002,
+        "description":"Hey Zack, you good? Haven't heard from you in a while.","fields":[],"footer":{"icon_url":"https://abs.twimg.com/icons/apple-touch-icon-192x192.png","text":"Twitter"},
+            "image":{"height":1291,"proxyURL":"https://images-ext-1.discordapp.net/external/3vUeuP-wTffDvgJ48oUVKYzUhNKCu-gmbx7mZICj9sk/https/pbs.twimg.com/media/FD3Chr2XMAsvGeu.jpg%3Alarge",
+                "url":"https://pbs.twimg.com/media/FD3Chr2XMAsvGeu.jpg:large","width":1888},"thumbnail":null,"timestamp":"2021-11-10T20:43:43.835Z","title":null,"type":"rich",
+                "url":"https://twitter.com/CulperResearch/status/1458535867836993537"}],"flags":0,"groupActivityApplication":null,"guildId":"848420184997101590","id":"908094667084685332",
+                "interaction":null,"mentions":{"channels":[],"crosspostedChannels":[],"everyone":false,"members":[],"repliedUser":null,"roles":[],"users":[]},"nonce":null,"pinned":false,
+                    "reactions":{"message":{"activity":null,"applicationId":"713026372142104687","attachments":[],"authorId":"891739136204087326","channelId":"891738656803545150",
+          "cleanContent":"Hey Zack, you good? Haven't heard from you in a while.  https://twitter.com/CulperResearch/status/1458535867836993537","components":[],
+          "content":"Hey Zack, you good? Haven't heard from you in a while.  https://twitter.com/CulperResearch/status/1458535867836993537","createdTimestamp":1636577040216,
+           "deleted":false,"editedTimestamp":null,"embeds":[{"color":1942002,"description":"Hey Zack, you good? Haven't heard from you in a while.","fields":[],
+             "provider":null,"thumbnail":null,"timestamp":1636577023835,"title":null,"type":"rich","url":"https://twitter.com/CulperResearch/status/1458535867836993537",
+                "video":null}],"flags":0,"groupActivityApplicationId":null,"guildId":"848420184997101590","id":"908094667084685332","interaction":null,"nonce":null,
+                "pinned":false,"reference":null,"stickers":[],"system":false,"tts":false,"type":"DEFAULT","webhookId":"891739136204087326"}},
+        "reference":null,"stickers":[],"system":false,"timestamp":"2021-11-10T20:44:00.261Z","tts":false,"type":"DEFAULT","webhookId":"891739136204087326"}
