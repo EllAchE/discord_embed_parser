@@ -2,14 +2,14 @@
 import { getDummyEmbed, getDummyMessage } from "./test_helpers";
 import { getRedirectUrl, testRegexOnEmbed } from "../embed_listener"
 import { EmbedElements } from "../types";
-import { getTweetShiftAuthor, replaceSpaceAndLowercase } from "../utils";
+import { getAuthorFromContentLink, getTweetShiftAuthor, replaceSpaceAndLowercase, testRegexOnStringCaseInsensitive } from "../utils";
 import { getRegexPatternFileName } from "../author_switch_logic";
 const assert = require('assert')
 
 // describe('Should create valid match embed', () => {
 //     it('Should create valid match embed', () => {
 //         const matchEmbed = createMatchEmbed("Test", "NO REGEX");
-//         assert.equal("Bot message matching a regex", matchEmbed.title);
+//         assert.equal("Bot message matching a regex 🐦", matchEmbed.title);
 //         assert.equal("Content", matchEmbed.fields[0].name);
 //         assert.equal("Test", matchEmbed.fields[0].value);
 //         assert.equal("Regex: NO REGEX", matchEmbed.footer?.text);
@@ -18,7 +18,7 @@ const assert = require('assert')
 
 //describe('Should get synchronous regex')
 
-describe('Should properly apply Regex on embed', () => {
+describe('Should test Regex on embed', () => {
     const mockEmbed = getDummyEmbed();
     it('Should match on title', () => {
         assert(EmbedElements.Title, testRegexOnEmbed(mockEmbed, "Test Embed"))
@@ -42,6 +42,10 @@ describe('Should properly apply Regex on embed', () => {
 
     it('Should match on field', () => {
         assert.equal(EmbedElements.Fields, testRegexOnEmbed(mockEmbed, "buffalo.*buffalo"))
+    })
+
+    it('Should match on field with wildcard', () => {
+        assert.equal(EmbedElements.Fields, testRegexOnEmbed(mockEmbed, "."))
     })
 
     it('Should fail to match on field', () => {
@@ -69,6 +73,15 @@ describe('Should properly apply Regex on embed', () => {
     })
 })
 
+describe('Should test Regex on string content', () => {
+    it('Should match on string content', () => {
+        assert(testRegexOnStringCaseInsensitive("shouldMatchAnytime", "."))
+    })
+    it('Should match on string content with a .', () => {
+        assert(testRegexOnStringCaseInsensitive("including a . in msg", "."))
+    })
+});
+
 describe('Should getRedirectUrl', () => {
     it('Should get url from short twitter url', async () => {
         assert.equal('http://www.madsci.org/posts/archives/2000-02/950761555.Eg.r.html', await getRedirectUrl('https://t.co/EJ4yZaizM6?amp=1'))
@@ -92,6 +105,19 @@ describe('Should getTweetShiftAuthor', () => {
     })
 })
 
+describe('Should getAuthorFromContentLink', () => {
+    it('Should successfully extract twitter username from link', () => {
+        const testMessage = getDummyMessage()
+        assert.equal('fakeUser', getAuthorFromContentLink(testMessage))
+    })
+
+    it('Should return default json string when no match for tweetshift on username', () => {
+        const testMessage = getDummyMessage()
+        testMessage.content = "Fake"
+        assert.equal('nomatch', getAuthorFromContentLink(testMessage))
+    })
+})
+
 describe('Should replaceSpaceAndLowercase', () => {
     it('Should replaceSpaceAndLowercase', () => {
         assert.equal('ajisbc.\taassfa', replaceSpaceAndLowercase('AJ is BC.\t aassfa '))
@@ -104,7 +130,7 @@ describe('Should replaceSpaceAndLowercase', () => {
 
 describe('Should only return config files that exist', () => {
     it('Should getRegexPatternFileName for existing file', () => {
-        assert.equal('src/regexes/sample-regex.json', getRegexPatternFileName('sample-RegEx'))
+        assert.equal('src/regexes/testfile.json', getRegexPatternFileName('Test File'))
     })
 
     it('Should return false when calling getRegexPatternFileName for file that DNE', () => {

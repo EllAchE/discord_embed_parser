@@ -20,10 +20,19 @@ export const createMatchEmbed = (embed: MessageEmbed): MessageEmbed => {
     return embed;
 }
 
-export const getTweetShiftAuthor = (msg: Message): string => {
-    const username = msg.author.username;
-    const indexOfMatch = username.indexOf('TweetShift')
+export const getAuthorFromContentLink = (msg: Message): string => {
+    // "https://twitter.com/zer0estv/status/1460276083065077760",
+    const twitterUsernameExtractionRegex = /(?<=https:\/\/twitter\.com\/)[^\/]*(?=\/)/gi
+    const twitterUsernameRegResult: RegExpExecArray | null = twitterUsernameExtractionRegex.exec(msg.content)
+    const username: string = twitterUsernameRegResult ? twitterUsernameRegResult[0] : "nomatch"
     logger.info(`extracted username of ${username} from message`)
+    return username
+}
+
+export const getTweetShiftAuthor = (msg: Message): string => {
+    const discordUsername = msg.author.username;
+    const indexOfMatch = discordUsername.indexOf('TweetShift')
+    logger.info(`extracted username of ${discordUsername} from message`)
     if (indexOfMatch < 1) return "default"
     return msg.author.username.substring(0, indexOfMatch - 3)
 }
@@ -40,15 +49,21 @@ export const sendParsedEmbed = (originalEmbed: MessageEmbed, pattern: string, cl
     }
 }
 
-export const sendStringMatch = async (content: string, client: Client): Promise<void> => {
+export const sendStringMatch = async (content: string, client: Client, pattern: string): Promise<void> => {
     const channelId = process.env.DISCORDJS_SEND_CHANNEL_ID; // enhancement is to support sending in same channel as embed is received in
     if (channelId) {
         logger.info(`attempting to send embed in channel with id ${channelId}`)
         const channel = client.channels.cache.get(channelId);
         (channel as TextChannel)?.send({ content: content });
+        (channel as TextChannel)?.send({ content: `Matching pattern was: ${pattern}` });
     }
 }
 
 export const replaceSpaceAndLowercase = (str: string): string => {
     return str.toLowerCase().replaceAll(/\ /g, '')
+}
+
+export function testRegexOnStringCaseInsensitive(content: string, regexPattern: string) {
+    let reg = new RegExp(regexPattern, 'i');
+    return reg.test(content);
 }

@@ -2,13 +2,12 @@ import { Client, MessageEmbed } from 'discord.js';
 import { readJSONSync } from 'fs-extra';
 import { logger } from './logger';
 import { EmbedElements, RegexConfig } from './types'
-import { sendParsedEmbed, sendStringMatch } from './utils';
+import { sendParsedEmbed, sendStringMatch, testRegexOnStringCaseInsensitive } from './utils';
 const followRedirect = require('follow-redirect-url')
 
 export const testRegexOnEmbed = (embed: MessageEmbed, regexPattern: string): string => {
     const regexMatchFunction = (content: string, regexPattern: string): boolean => {
-        let reg = new RegExp(regexPattern, 'i');
-        return reg.test(content);
+        return testRegexOnStringCaseInsensitive(content, regexPattern);
     }
     return checkEmbed(embed, regexPattern, regexMatchFunction)
 }
@@ -26,12 +25,16 @@ export const iterateRegPatternsAsyncString = async (content: string, regexFilePa
     for (let pattern of regexConfig.regex) {
         let reg = new RegExp(pattern, 'i');
         if (reg.test(content)) {
-            sendStringMatch(content, client)
+            sendStringMatch(content, client, pattern).catch(err => {
+                logger.error(`error sending string match in channel ${err}`)
+            })
         }
     }
     for (let substring of regexConfig.substring) {
         if (content.includes(substring)) {
-            sendStringMatch(content, client)
+            sendStringMatch(content, client, substring).catch(err => {
+                logger.error(`error sending string match in channel ${err}`)
+            })
         }
     }
 }
@@ -41,6 +44,7 @@ export const getRedirectUrl = async (url: string): Promise<string> => { // these
         return urls[urls.length - 1].url
     }).catch(err => {
         logger.error(err)
+        return undefined;
     })
     logger.info(`retrieved redirect url ${r} from url ${url}`)
     if (r) return r;
@@ -113,7 +117,7 @@ export const iteratePatternsSynchronousEmbeds = (embeds: MessageEmbed[], regexFi
         //     break;
         // }
         if (regResult != "NO MATCH") {
-            logger.info("Match on message!", new Date());
+            logger.info("Match on message!", new Date())
             //const stringMatch = embed[regResult].toString(); // commented  out until further logic needed on parsing embed
             sendParsedEmbed(embed, matchPatternString, client);
             break;

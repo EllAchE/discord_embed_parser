@@ -14,12 +14,11 @@ export const getDummyEmbed = (): MessageEmbed => {
     return dummyEmbed;
 }
 
-
 export const getDummyMessage = (): Message => {
     // @ts-ignore
     return {
         // @ts-ignore
-        "content": "some string values in content",
+        "content": "https://twitter.com/fakeUser/status/1459106423074398226",
         // @ts-ignore
         "author": {
             "username": "Jim Cramer • TweetShift"

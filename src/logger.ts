@@ -2,6 +2,7 @@ import { createLogger, format, Logger, transports } from "winston";
 
 export const logger: Logger = createLogger(
     {
+        level: 'info',
         format: format.combine(
             format.timestamp(),
             format.simple()
