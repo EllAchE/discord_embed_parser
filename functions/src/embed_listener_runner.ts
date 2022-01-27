@@ -46,11 +46,13 @@ client.on('messageCreate', (message: Message): void => { // todo test race condi
     }
 })
 
-// Run program
-if (functions.config().discord.botToken) {
-    client.login(functions.config().discord.botToken);
-    logger.info(`initialized client`, new Date())
-}
-else {
-    logger.error(`No value of bot token, client failed to start`)
+export const run = () => {
+    // Run program
+    if (functions.config().discord.bot_token) {
+        client.login(functions.config().discord.bot_token);
+        logger.info(`initialized client`, new Date())
+    }
+    else {
+        logger.error(`No value of bot token, client failed to start`)
+    }
 }

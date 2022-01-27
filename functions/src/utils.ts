@@ -40,7 +40,7 @@ export const getTweetShiftAuthor = (msg: Message): string => {
 }
 
 export const sendParsedEmbed = (originalEmbed: MessageEmbed, pattern: string, client: Client): void => {
-    const channelId = functions.config().discord.sendChannelId; // env vars need to be set in firebase
+    const channelId = functions.config().discord.send_channel_id; // env vars need to be set in firebase
     const embed = createMatchEmbed(originalEmbed); // todo update this embed
 
     if (channelId) {
@@ -52,7 +52,7 @@ export const sendParsedEmbed = (originalEmbed: MessageEmbed, pattern: string, cl
 }
 
 export const sendStringMatch = async (content: string, client: Client, pattern: string): Promise<void> => {
-    const channelId = functions.config().discordSendChannel.id; // enhancement is to support sending in same channel as embed is received in
+    const channelId = functions.config().discord_send_channel.id; // enhancement is to support sending in same channel as embed is received in
     if (channelId) {
         logger.info(`attempting to send embed in channel with id ${channelId}`)
         const channel = client.channels.cache.get(channelId);

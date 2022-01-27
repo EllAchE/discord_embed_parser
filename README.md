@@ -11,11 +11,11 @@ Features:
 
 FB deploy will fail if you have not set the required config variables. They are:
 
-- `discord.botToken`
-- `discord.sendChannelId`
+- `discord.bot_token`
+- `discord.send_channel_id`
 
 They can be set with a command like
-`firebase functions:config:set discord.botToken="TOKEN" discord.sendChannelId="CHANNEL_ID"`
+`firebase functions:config:set discord.bot_token="TOKEN" discord.send_channel_id="CHANNEL_ID"`
 
 
 ### Installation
