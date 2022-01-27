@@ -9,6 +9,14 @@ Features:
 *Currently author-level regex customizations are designed explicitly for TweetShift content; however the code is generic and this can easily be adapted
 
 
+FB deploy will fail if you have not set the required config variables. They are:
+
+- `discord.botToken`
+- `discord.sendChannelId`
+
+They can be set with a command like
+`firebase functions:config:set discord.botToken="TOKEN" discord.sendChannelId="CHANNEL_ID"`
+
 
 ### Installation
 
