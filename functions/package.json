@@ -2,10 +2,15 @@
   "name": "discord_embed_parsing",
   "version": "1.0.0",
   "description": "Reads embeds sent in a channel and parses for a regex match. Node/Typescript/discord.js",
-  "main": "embed_listener_runner.js",
+  "main": "dist/embed_listener_runner.js",
   "scripts": {
     "test": "mocha ./dist/test/test.js",
-    "start": "node -r dotenv/config ./dist/embed_listener_runner.js"
+    "build": "tsc",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
   },
   "repository": {
     "type": "git",
