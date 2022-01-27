@@ -16,6 +16,7 @@
   },
   "include": [
     "src",
-    "types"
+    "types",
+    "functions/src/test"
   ]
 }

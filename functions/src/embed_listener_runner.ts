@@ -3,6 +3,7 @@ import { getRegexPatternFileName } from './author_switch_logic';
 import { iterateRegPatternsAsyncEmbeds as iterateRegPatternsCheckingRedirectUrl, iterateRegPatternsAsyncString, iteratePatternsSynchronousEmbeds } from './embed_listener';
 import { logger } from './logger';
 import { getTweetShiftAuthor } from './utils';
+import * as functions from "firebase-functions";
 
 var client: Client = new Client({
     intents: [
@@ -46,8 +47,8 @@ client.on('messageCreate', (message: Message): void => { // todo test race condi
 })
 
 // Run program
-if (process.env.DISCORDJS_BOT_TOKEN_EMBED_LISTENER) {
-    client.login(process.env.DISCORDJS_BOT_TOKEN_EMBED_LISTENER.toString());
+if (functions.config().discord.botToken) {
+    client.login(functions.config().discord.botToken);
     logger.info(`initialized client`, new Date())
 }
 else {

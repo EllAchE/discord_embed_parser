@@ -1,9 +1,9 @@
 //import { createMatchEmbed } from "../utils"
 import { getDummyEmbed, getDummyMessage } from "./test_helpers";
-import { getRedirectUrl, testRegexOnEmbed } from "../embed_listener"
-import { EmbedElements } from "../types";
-import { getAuthorFromContentLink, getTweetShiftAuthor, replaceSpaceAndLowercase, testRegexOnStringCaseInsensitive } from "../utils";
 import { getRegexPatternFileName } from "../author_switch_logic";
+import { EmbedElements } from "../types";
+import { getRedirectUrl, testRegexOnEmbed } from "../embed_listener";
+import { getAuthorFromContentLink, getTweetShiftAuthor, replaceSpaceAndLowercase, testRegexOnStringCaseInsensitive } from "../utils";
 const assert = require('assert')
 
 // describe('Should create valid match embed', () => {

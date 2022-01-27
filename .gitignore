@@ -6,6 +6,7 @@
 dist
 src/regexes/*
 !src/regexes/sample-regex.json
+THISONEISLOCAL.txt
 
 ###########
 # Autogen
