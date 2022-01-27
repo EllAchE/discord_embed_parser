@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "discord-embed-parser"
-  }
+    "default": "discord-embed-parser",
+    "prod": "discord-embed-parser"
+  },
+  "targets": {}
 }

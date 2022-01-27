@@ -2,7 +2,7 @@
   "name": "discord_embed_parsing",
   "version": "1.0.0",
   "description": "Reads embeds sent in a channel and parses for a regex match. Node/Typescript/discord.js",
-  "main": "dist/embed_listener_runner.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "mocha ./dist/test/test.js",
     "build": "tsc",
